@@ -1,0 +1,62 @@
+version: "3.9"
+
+services:
+  postgres:
+    image: postgres:16
+    environment:
+      POSTGRES_USER: aacp
+      POSTGRES_PASSWORD: aacp_pass
+      POSTGRES_DB: aacp_state
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U aacp -d aacp_state"]
+      interval: 5s
+      timeout: 3s
+      retries: 30
+
+  # Mock Permit (replace with bl08_permit_service in real deployment)
+  permit-mock:
+    image: python:3.11-slim
+    command: ["python","-c","from http.server import BaseHTTPRequestHandler,HTTPServer; import json; class H(BaseHTTPRequestHandler):   def do_POST(self):     l=int(self.headers.get('Content-Length','0')); self.rfile.read(l);     self.send_response(200); self.send_header('Content-Type','application/json'); self.end_headers();     self.wfile.write(json.dumps({'permit_id':'permit_mock_1','decision':'ALLOW','reason':None,'trace_id':'trace_mock_1'}).encode()); HTTPServer(('0.0.0.0',8080),H).serve_forever()"]
+    ports: ["8080:8080"]
+
+  # Mock Audit Sink (replace with real bl08 audit sink)
+  audit-mock:
+    image: python:3.11-slim
+    command: ["python","-c","from http.server import BaseHTTPRequestHandler,HTTPServer; import json; class H(BaseHTTPRequestHandler):   def do_POST(self):     l=int(self.headers.get('Content-Length','0')); body=self.rfile.read(l).decode();     self.send_response(200); self.send_header('Content-Type','application/json'); self.end_headers();     self.wfile.write(json.dumps({'ok':True,'echo':body[:200]}).encode()); HTTPServer(('0.0.0.0',8080),H).serve_forever()"]
+    ports: ["8081:8080"]
+
+  bl13:
+    image: python:3.11-slim
+    working_dir: /app
+    volumes:
+      - ./bl13_recommendation_plane_service_v2:/app
+    environment:
+      DATABASE_URL: postgresql+psycopg2://aacp:aacp_pass@postgres:5432/aacp_state
+      AACP_PERMIT_URL: http://permit-mock:8080
+      AACP_AUDIT_SINK_URL: http://audit-mock:8080
+      AACP_AUDIT_STRICT: "true"
+      AACP_EXEC_REQUEST_TOPIC: aacp.exec.request
+    command: ["bash","-lc","pip install -q -e . && uvicorn app.main:app --host 0.0.0.0 --port 8080"]
+    depends_on:
+      postgres:
+        condition: service_healthy
+    ports: ["8082:8080"]
+
+  bl17:
+    image: python:3.11-slim
+    working_dir: /app
+    volumes:
+      - ./bl17_intent_gateway_service_v2:/app
+    environment:
+      DATABASE_URL: postgresql+psycopg2://aacp:aacp_pass@postgres:5432/aacp_state
+      AACP_PERMIT_URL: http://permit-mock:8080
+      BL13_RECOMMENDATION_URL: http://bl13:8080
+    command: ["bash","-lc","pip install -q -e . && uvicorn app.main:app --host 0.0.0.0 --port 8080"]
+    depends_on:
+      postgres:
+        condition: service_healthy
+      bl13:
+        condition: service_started
+    ports: ["8083:8080"]

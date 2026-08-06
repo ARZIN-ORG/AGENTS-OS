@@ -1,0 +1,17 @@
+{
+  "id": "infra/infra-kafka-health",
+  "path": "/infra/infra-kafka-health",
+  "roles": [
+    "ops",
+    "admin"
+  ],
+  "mode": "read",
+  "blDependencies": [
+    "bl19"
+  ],
+  "enforce": {
+    "roleToView": true,
+    "actionToPermit": false,
+    "auditAware": true
+  }
+}

@@ -1,0 +1,45 @@
+%% Mermaid Reference Architecture (Agent OS v1 / Phase 1)
+flowchart TB
+
+subgraph L4[Layer 4 — Interaction]
+  V[Voice/Text Input] --> IG[Intent Gateway]
+  IG --> PREVIEW[Show Intent to Manager]
+  PREVIEW -->|Edit/Reject| IG
+  PREVIEW -->|Final Approve| PERMIT_REQ[Permit Request]
+end
+
+subgraph L1[Layer 1 — OS-Native Control Plane]
+  REG[Registry & Identity]
+  SIG[Signature & Trust Verifier]
+  POL[Policy Plane]
+  PMT[Permit Service]
+  CH[Channel Manager]
+  AUD[Audit & Trace]
+end
+
+subgraph L2[Layer 2 — Infrastructure]
+  INF[Infra Advisors]
+end
+
+subgraph L3[Layer 3 — Domain]
+  DOM[Domain Advisors]
+end
+
+PERMIT_REQ --> SIG
+SIG --> REG
+REG --> POL
+POL --> PMT
+PMT -->|Permit Granted| EXEC[Execution Publisher]
+PMT -->|Permit Denied| REJ[Reject/DLQ]
+
+DOM --> REC[Recommendations Topic]
+INF --> REC
+
+EXEC --> AACP[AACP Data Plane / Kafka Topics]
+AACP --> AUDSINK[Audit Sink (Stateful)]
+AACP --> DLQ[DLQ Topic]
+AUD --> AUDSINK
+REJ --> DLQ
+
+classDef locked fill:#111,stroke:#333,color:#fff;
+class L1 locked;

@@ -1,0 +1,18 @@
+{
+  "step": 7,
+  "title": "Strict Test Harness + Chaos/Fail Cases",
+  "phase": "phase1",
+  "locked_constraints_validated": [
+    "No operational publish without audit append (fail-closed)",
+    "No publish with invalid signature",
+    "No publish outside policy/topic/channel",
+    "No publish without permit (human-approval semantics)",
+    "Envelope required fields enforced",
+    "Chain hash is produced; optional continuity can be enforced"
+  ],
+  "notes": [
+    "Harness calls Trust/Policy/Permit/Audit endpoints directly; interceptor HTTP can be plugged later.",
+    "Kafka path verification is indirect via these enforcement services unless interceptor is exposed."
+  ],
+  "generated_epoch": 1767724454
+}

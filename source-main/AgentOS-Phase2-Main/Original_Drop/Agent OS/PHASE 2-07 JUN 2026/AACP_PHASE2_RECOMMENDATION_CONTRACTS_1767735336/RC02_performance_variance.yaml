@@ -1,0 +1,12 @@
+
+domain_id: phase2.performance_variance
+mode: recommendation_only
+allowed_capabilities:
+  - variance_analysis
+  - pattern_extraction
+prohibited:
+  - ranking_enforcement
+  - execution
+governance:
+  human_approval_required: true
+  audit_trace: mandatory

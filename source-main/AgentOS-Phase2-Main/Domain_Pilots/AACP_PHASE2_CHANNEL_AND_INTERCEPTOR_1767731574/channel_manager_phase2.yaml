@@ -1,0 +1,16 @@
+# Channel Manager Wiring – Phase 2 Domain Agent
+channel:
+  name: aacp.domain.riskvariance.recommend.v1
+  direction: publish-only
+  allowedProducers:
+    - arz.domain.operational_risk_variance_advisor
+  qos:
+    delivery: AT_LEAST_ONCE
+    orderingKey: trace_id
+  limits:
+    maxPayloadBytes: 262144
+    ratePerSecond: 50
+  guardrails:
+    wildcardTopics: false
+    executeIntentAllowed: false
+    shadowByDefault: false

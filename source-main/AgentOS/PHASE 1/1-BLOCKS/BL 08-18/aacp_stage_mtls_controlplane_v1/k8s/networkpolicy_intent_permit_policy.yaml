@@ -1,0 +1,78 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: aacp-intent-gateway-netpol
+spec:
+  podSelector:
+    matchLabels:
+      app: intent-gateway
+  policyTypes: [Ingress, Egress]
+  ingress:
+    - from:
+        - namespaceSelector:
+            matchLabels:
+              access: management
+        - podSelector:
+            matchLabels:
+              access: management
+      ports:
+        - protocol: TCP
+          port: 8080
+  egress:
+    - to:
+        - podSelector:
+            matchLabels:
+              app: permit-service
+      ports:
+        - protocol: TCP
+          port: 8443
+    - to:
+        - namespaceSelector: {}
+      ports:
+        - protocol: UDP
+          port: 53
+        - protocol: TCP
+          port: 53
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: aacp-permit-service-netpol-mtls
+spec:
+  podSelector:
+    matchLabels:
+      app: permit-service
+  policyTypes: [Ingress, Egress]
+  ingress:
+    - from:
+        - podSelector:
+            matchLabels:
+              app: intent-gateway
+        - podSelector:
+            matchLabels:
+              app: kafka-interceptor
+      ports:
+        - protocol: TCP
+          port: 8443
+  egress:
+    - to:
+        - podSelector:
+            matchLabels:
+              app: policy-plane
+      ports:
+        - protocol: TCP
+          port: 8443
+    - to:
+        - podSelector:
+            matchLabels:
+              app: audit-sink
+      ports:
+        - protocol: TCP
+          port: 8443
+    - to:
+        - namespaceSelector: {}
+      ports:
+        - protocol: UDP
+          port: 53
+        - protocol: TCP
+          port: 53

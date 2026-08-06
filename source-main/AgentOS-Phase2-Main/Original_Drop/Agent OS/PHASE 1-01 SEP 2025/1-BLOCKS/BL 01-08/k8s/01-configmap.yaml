@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: aacp-config
+  namespace: arzin-aacp
+data:
+  REGISTRY_URL: "http://agent-registry:8080"
+  POLICY_URL: "http://policy-plane:8081"
+  PERMIT_URL: "http://permit-service:8082"
+  AUDIT_SINK_URL: "http://audit-sink:8083"
+  DLQ_TOPIC: "AACP_DLQ"
+  FAIL_CLOSED: "true"
+  CACHE_TTL_MS: "250"

@@ -1,0 +1,25 @@
+{
+  "env": "lab_local",
+  "endpoints": {
+    "audit_sink": "http://localhost:8000",
+    "trust": "http://localhost:8010",
+    "policy": "http://localhost:8020",
+    "permit": "http://localhost:8030",
+    "registry": "http://localhost:8040"
+  },
+  "defaults": {
+    "channel_id": "ch-default",
+    "topic": "arz.payment.initiated",
+    "producer_id": "agent:demo-producer",
+    "consumer_id": "agent:demo-consumer",
+    "policy_id": "pol-default",
+    "policy_version": "1",
+    "permit_id": "permit-demo-approved",
+    "intent_id": "intent-demo-1",
+    "key_id": "dev-key-1",
+    "signing_mode": "dev",
+    "expires_in_ms": 300000
+  },
+  "strict_chain": false,
+  "replay_window_ms": 86400000
+}

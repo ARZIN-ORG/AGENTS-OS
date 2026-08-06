@@ -1,0 +1,55 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: aacp-postgres-secret
+type: Opaque
+stringData:
+  POSTGRES_USER: aacp
+  POSTGRES_PASSWORD: aacp_pass
+  POSTGRES_DB: aacp_state
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: aacp-postgres
+spec:
+  ports:
+    - port: 5432
+      name: postgres
+  selector:
+    app: aacp-postgres
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: aacp-postgres
+spec:
+  serviceName: aacp-postgres
+  replicas: 1
+  selector:
+    matchLabels:
+      app: aacp-postgres
+  template:
+    metadata:
+      labels:
+        app: aacp-postgres
+    spec:
+      containers:
+        - name: postgres
+          image: postgres:16
+          ports:
+            - containerPort: 5432
+          envFrom:
+            - secretRef:
+                name: aacp-postgres-secret
+          volumeMounts:
+            - name: pgdata
+              mountPath: /var/lib/postgresql/data
+  volumeClaimTemplates:
+    - metadata:
+        name: pgdata
+      spec:
+        accessModes: ["ReadWriteOnce"]
+        resources:
+          requests:
+            storage: 20Gi

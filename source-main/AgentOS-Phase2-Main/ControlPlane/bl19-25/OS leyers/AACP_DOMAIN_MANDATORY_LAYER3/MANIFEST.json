@@ -1,0 +1,23 @@
+{
+  "layer": "Domain",
+  "mandatory": true,
+  "agents": [
+    "OperationalPlanningAdvisor",
+    "PerformanceVarianceAnalyzer",
+    "RecommendationSuggestionAgent"
+  ],
+  "modules": [
+    "operational_planning_advisor.py",
+    "performance_variance_analyzer.py",
+    "recommendation_suggestion_agent.py"
+  ],
+  "locked_constraints": [
+    "Domain agents are advisory-only (recommendation)",
+    "No autonomous decisions/execution in Phase 1/2",
+    "Human approval required for any action",
+    "Operational publish only via AACP path after permit",
+    "Fail-closed on missing context (no guessing)"
+  ],
+  "version": "v1",
+  "created_epoch": 1767723397
+}

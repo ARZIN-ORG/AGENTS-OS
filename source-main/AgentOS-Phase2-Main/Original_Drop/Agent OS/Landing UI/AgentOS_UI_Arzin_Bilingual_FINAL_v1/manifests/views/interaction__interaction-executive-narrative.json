@@ -1,0 +1,19 @@
+{
+  "id": "interaction/interaction-executive-narrative",
+  "path": "/interaction/interaction-executive-narrative",
+  "roles": [
+    "board",
+    "manager",
+    "admin"
+  ],
+  "mode": "read",
+  "blDependencies": [
+    "bl19",
+    "bl13"
+  ],
+  "enforce": {
+    "roleToView": true,
+    "actionToPermit": false,
+    "auditAware": true
+  }
+}

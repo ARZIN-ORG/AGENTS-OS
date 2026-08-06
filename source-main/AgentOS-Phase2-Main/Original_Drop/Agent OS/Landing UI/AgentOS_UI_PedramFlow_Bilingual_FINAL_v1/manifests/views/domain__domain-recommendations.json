@@ -1,0 +1,20 @@
+{
+  "id": "domain/domain-recommendations",
+  "path": "/domain/domain-recommendations",
+  "roles": [
+    "manager",
+    "ops",
+    "governance",
+    "admin"
+  ],
+  "mode": "suggest",
+  "blDependencies": [
+    "bl13",
+    "bl08"
+  ],
+  "enforce": {
+    "roleToView": true,
+    "actionToPermit": false,
+    "auditAware": true
+  }
+}

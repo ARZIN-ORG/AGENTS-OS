@@ -1,0 +1,19 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: fault-block-permit-to-policy
+  namespace: aacp
+spec:
+  podSelector:
+    matchLabels:
+      app: permit-service
+  policyTypes: [Egress]
+  egress:
+    # allow DNS only; block everything else (including policy-plane)
+    - to:
+        - namespaceSelector: {}
+      ports:
+        - protocol: UDP
+          port: 53
+        - protocol: TCP
+          port: 53

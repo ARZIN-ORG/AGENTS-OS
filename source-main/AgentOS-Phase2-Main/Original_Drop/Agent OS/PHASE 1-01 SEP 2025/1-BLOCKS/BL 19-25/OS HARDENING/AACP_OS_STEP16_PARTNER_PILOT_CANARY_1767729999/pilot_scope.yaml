@@ -1,0 +1,8 @@
+partner_id: example_partner
+mode: canary
+permissions:
+  execute: false
+  recommend: true
+channels:
+  - aacp.partner.canary
+duration_days: 14

@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: audit-sink-service
+  namespace: aacp-system
+spec:
+  selector:
+    app: audit-sink-service
+  ports:
+    - name: http
+      port: 8000
+      targetPort: 8000

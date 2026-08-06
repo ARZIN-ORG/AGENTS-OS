@@ -1,0 +1,17 @@
+{
+  "id": "os/os-permit-review",
+  "path": "/os/os-permit-review",
+  "roles": [
+    "governance",
+    "admin"
+  ],
+  "mode": "execute",
+  "blDependencies": [
+    "bl08"
+  ],
+  "enforce": {
+    "roleToView": true,
+    "actionToPermit": true,
+    "auditAware": true
+  }
+}

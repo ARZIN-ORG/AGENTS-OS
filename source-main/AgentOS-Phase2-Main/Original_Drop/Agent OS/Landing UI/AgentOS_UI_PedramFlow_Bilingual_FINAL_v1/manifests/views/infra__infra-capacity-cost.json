@@ -1,0 +1,18 @@
+{
+  "id": "infra/infra-capacity-cost",
+  "path": "/infra/infra-capacity-cost",
+  "roles": [
+    "ops",
+    "admin",
+    "finance"
+  ],
+  "mode": "suggest",
+  "blDependencies": [
+    "bl19"
+  ],
+  "enforce": {
+    "roleToView": true,
+    "actionToPermit": false,
+    "auditAware": true
+  }
+}

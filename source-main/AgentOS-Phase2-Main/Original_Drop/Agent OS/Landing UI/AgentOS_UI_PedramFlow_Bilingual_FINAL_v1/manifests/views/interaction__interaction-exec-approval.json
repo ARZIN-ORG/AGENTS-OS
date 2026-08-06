@@ -1,0 +1,19 @@
+{
+  "id": "interaction/interaction-exec-approval",
+  "path": "/interaction/interaction-exec-approval",
+  "roles": [
+    "manager",
+    "governance",
+    "admin"
+  ],
+  "mode": "execute",
+  "blDependencies": [
+    "bl08",
+    "bl07"
+  ],
+  "enforce": {
+    "roleToView": true,
+    "actionToPermit": true,
+    "auditAware": true
+  }
+}

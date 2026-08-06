@@ -1,0 +1,17 @@
+{
+  "id": "domain/domain-performance-variance",
+  "path": "/domain/domain-performance-variance",
+  "roles": [
+    "manager",
+    "admin"
+  ],
+  "mode": "read",
+  "blDependencies": [
+    "bl13"
+  ],
+  "enforce": {
+    "roleToView": true,
+    "actionToPermit": false,
+    "auditAware": true
+  }
+}

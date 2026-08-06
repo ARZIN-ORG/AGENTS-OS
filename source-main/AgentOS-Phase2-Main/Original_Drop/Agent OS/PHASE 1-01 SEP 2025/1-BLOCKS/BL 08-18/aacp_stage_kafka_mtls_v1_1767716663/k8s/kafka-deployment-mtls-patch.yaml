@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: kafka
+spec:
+  template:
+    spec:
+      containers:
+        - name: kafka
+          ports:
+            - containerPort: 9093
+          env:
+            - name: KAFKA_KEYSTORE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: kafka-broker-tls
+                  key: keystore-password
+            - name: KAFKA_KEY_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: kafka-broker-tls
+                  key: key-password
+            - name: KAFKA_TRUSTSTORE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: kafka-broker-tls
+                  key: truststore-password
+          volumeMounts:
+            - name: kafka-tls
+              mountPath: /etc/kafka/secrets
+              readOnly: true
+      volumes:
+        - name: kafka-tls
+          secret:
+            secretName: kafka-broker-tls

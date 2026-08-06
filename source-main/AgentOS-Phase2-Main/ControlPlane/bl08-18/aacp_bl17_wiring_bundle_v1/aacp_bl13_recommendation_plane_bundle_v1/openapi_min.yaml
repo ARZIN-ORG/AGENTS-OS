@@ -1,0 +1,38 @@
+openapi: 3.0.3
+info:
+  title: BL-13 Recommendation Plane (Phase 1)
+  version: 0.1.0
+paths:
+  /health:
+    get:
+      responses:
+        '200': { description: OK }
+  /v1/suggestions:
+    post:
+      responses:
+        '200': { description: Created }
+    get:
+      parameters:
+        - in: query
+          name: status
+          schema: { type: string }
+      responses:
+        '200': { description: List }
+  /v1/suggestions/{suggestion_id}:
+    get:
+      parameters:
+        - in: path
+          name: suggestion_id
+          required: true
+          schema: { type: string }
+      responses:
+        '200': { description: Item }
+  /v1/suggestions/{suggestion_id}/decision:
+    post:
+      parameters:
+        - in: path
+          name: suggestion_id
+          required: true
+          schema: { type: string }
+      responses:
+        '200': { description: Decision }

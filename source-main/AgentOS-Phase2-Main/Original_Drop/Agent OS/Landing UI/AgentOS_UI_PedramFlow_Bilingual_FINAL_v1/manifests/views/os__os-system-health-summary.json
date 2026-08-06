@@ -1,0 +1,18 @@
+{
+  "id": "os/os-system-health-summary",
+  "path": "/os/os-system-health-summary",
+  "roles": [
+    "viewer",
+    "ops",
+    "admin"
+  ],
+  "mode": "read",
+  "blDependencies": [
+    "bl19"
+  ],
+  "enforce": {
+    "roleToView": true,
+    "actionToPermit": false,
+    "auditAware": true
+  }
+}

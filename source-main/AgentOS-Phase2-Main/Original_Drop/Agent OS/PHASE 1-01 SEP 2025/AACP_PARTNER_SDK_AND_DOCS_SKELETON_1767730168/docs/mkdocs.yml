@@ -1,0 +1,18 @@
+site_name: AACP / Agent OS (External)
+nav:
+  - Home: index.md
+  - Concepts:
+      - Control Plane vs Data Plane: concepts/control_vs_data_plane.md
+      - Safety & Human-in-the-loop: concepts/hitl.md
+  - Protocol:
+      - Message Lifecycle: protocol/lifecycle.md
+      - Audit Envelope v1: protocol/audit_envelope_v1.md
+      - Security Model: protocol/security.md
+  - Partner Onboarding:
+      - Eligibility & Levels: partner/eligibility_levels.md
+      - Sandbox & Shadow Mode: partner/sandbox_shadow.md
+      - Go / No-Go: partner/go_no_go.md
+  - SDK:
+      - SDK Rules: sdk/rules.md
+      - Quickstart (Shadow Client): sdk/quickstart.md
+  - FAQ: faq.md

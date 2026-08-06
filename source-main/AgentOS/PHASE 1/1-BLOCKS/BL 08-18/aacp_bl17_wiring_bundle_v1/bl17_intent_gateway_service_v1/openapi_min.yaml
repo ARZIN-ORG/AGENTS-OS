@@ -1,0 +1,23 @@
+openapi: 3.0.3
+info:
+  title: BL-17 Omni-Channel Intent Gateway (Phase 1)
+  version: 0.1.0
+paths:
+  /health:
+    get: { responses: { '200': { description: OK } } }
+  /v1/intents/text:
+    post: { responses: { '200': { description: Created } } }
+  /v1/intents/voice:
+    post: { responses: { '200': { description: Created } } }
+  /v1/intents:
+    get: { responses: { '200': { description: List } } }
+  /v1/intents/{intent_id}:
+    get: { responses: { '200': { description: Item } } }
+  /v1/intents/{intent_id}/finalize:
+    post: { responses: { '200': { description: Finalized } } }
+  /v1/suggestions:
+    get: { responses: { '200': { description: List suggestions } } }
+  /v1/suggestions/{suggestion_id}:
+    get: { responses: { '200': { description: Suggestion } } }
+  /v1/suggestions/{suggestion_id}/decision:
+    post: { responses: { '200': { description: Decision } } }

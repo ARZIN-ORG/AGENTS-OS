@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "aacp-partner-sdk"
+version = "0.1.0"
+description = "AACP Partner SDK (safe, non-executable)"
+requires-python = ">=3.10"
+dependencies = [
+  "pydantic>=2.0",
+  "cryptography>=41.0",
+  "orjson>=3.9",
+]
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]

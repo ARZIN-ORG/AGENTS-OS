@@ -1,0 +1,104 @@
+PHASE 2/AACP_PHASE2_CHANNEL_AND_INTERCEPTOR_1767731574/channel_manager_phase2.yaml
+PHASE 2/AACP_PHASE2_CHANNEL_AND_INTERCEPTOR_1767731574/interceptor_validation_phase2.yaml
+PHASE 2/AACP_PHASE2_DOMAIN1_PILOT_FULL_v2/README.md
+PHASE 2/AACP_PHASE2_DOMAIN1_PILOT_FULL_v2/agent_mapping.md
+PHASE 2/AACP_PHASE2_DOMAIN1_PILOT_FULL_v2/domain1_scope.md
+PHASE 2/AACP_PHASE2_DOMAIN1_PILOT_FULL_v2/recommendation_contract.yaml
+PHASE 2/AACP_PHASE2_DOMAIN2_PATCH_SHADOW_GOVERNED_v2.1/README.md
+PHASE 2/AACP_PHASE2_DOMAIN2_PATCH_SHADOW_GOVERNED_v2.1/aacp/patch_notes.md
+PHASE 2/AACP_PHASE2_DOMAIN2_PATCH_SHADOW_GOVERNED_v2.1/governance/labels.yaml
+PHASE 2/AACP_PHASE2_DOMAIN2_PILOT_FULL_v2/README.md
+PHASE 2/AACP_PHASE2_DOMAIN2_PILOT_FULL_v2/domain2_agent_mapping.md
+PHASE 2/AACP_PHASE2_DOMAIN2_PILOT_FULL_v2/domain2_execution_guardrails.md
+PHASE 2/AACP_PHASE2_DOMAIN2_PILOT_FULL_v2/domain2_pilot_overview.md
+PHASE 2/AACP_PHASE2_DOMAIN2_PILOT_FULL_v2/domain2_recommendation_contract.md
+PHASE 2/AACP_PHASE2_DOMAIN2_PILOT_FULL_v2/domain2_value_and_risk.md
+PHASE 2/AACP_PHASE2_DOMAIN3_PILOT_FINAL_v1_1_1767736395/README.md
+PHASE 2/AACP_PHASE2_DOMAIN3_PILOT_FINAL_v1_1_1767736395/domain3/agent_mapping.md
+PHASE 2/AACP_PHASE2_DOMAIN3_PILOT_FINAL_v1_1_1767736395/domain3/governance_console_executive_mode.md
+PHASE 2/AACP_PHASE2_DOMAIN3_PILOT_FINAL_v1_1_1767736395/domain3/guardrails_v1_1.md
+PHASE 2/AACP_PHASE2_DOMAIN3_PILOT_FINAL_v1_1_1767736395/domain3/overview.md
+PHASE 2/AACP_PHASE2_DOMAIN3_PILOT_FINAL_v1_1_1767736395/domain3/patch_notes_v1_1.md
+PHASE 2/AACP_PHASE2_DOMAIN3_PILOT_FINAL_v1_1_1767736395/domain3/recommendation_contract_v1_1.yaml
+PHASE 2/AACP_PHASE2_DOMAIN3_PILOT_FINAL_v1_1_1767736395/domain3/value_risk.md
+PHASE 2/AACP_PHASE2_DOMAIN_AGENT_CONTRACT_RISK_VARIANCE_v1_1767731444/README.md
+PHASE 2/AACP_PHASE2_DOMAIN_AGENT_CONTRACT_RISK_VARIANCE_v1_1767731444/agent_contract.yaml
+PHASE 2/AACP_PHASE2_DOMAIN_AGENT_CONTRACT_RISK_VARIANCE_v1_1767731444/policy_binding.yaml
+PHASE 2/AACP_PHASE2_DOMAIN_SELECTION_DECISION_1767736136/PHASE2_DOMAIN_DECISION.md
+PHASE 2/AACP_PHASE2_RECOMMENDATION_CONTRACTS_1767735336/PHASE2_READINESS_NOTICE.txt
+PHASE 2/AACP_PHASE2_RECOMMENDATION_CONTRACTS_1767735336/RC01_operational_risk.yaml
+PHASE 2/AACP_PHASE2_RECOMMENDATION_CONTRACTS_1767735336/RC02_performance_variance.yaml
+PHASE 2/AACP_PHASE2_RECOMMENDATION_CONTRACTS_1767735336/RC03_capacity_cost_trend.yaml
+PHASE 2/ARZIN-AGENTOS-UX-SPEC-v1.0.txt
+PHASE 2/Landing UI/AACP_CTO_STEP_BY_STEP_PLAN.md
+PHASE 2/Landing UI/AACP_EXTERNAL_REGULATORY_NARRATIVE_v1.md
+PHASE 2/Landing UI/AACP_GAMEDAY_PLAYBOOK_v1.md
+PHASE 2/Landing UI/AACP_Mobile_Strategy_AgentOS_v1.md
+PHASE 2/Landing UI/AgentOS_UI_Dark_Arzin/README.md
+PHASE 2/Landing UI/AgentOS_UI_Dark_Arzin/assets/agentosbackg.png
+PHASE 2/Landing UI/AgentOS_UI_Dark_Arzin/assets/agentoslogo.png
+PHASE 2/Landing UI/AgentOS_UI_Dark_Arzin/css/app.css
+PHASE 2/Landing UI/AgentOS_UI_Dark_Arzin/css/theme-dark.css
+PHASE 2/Landing UI/AgentOS_UI_Dark_Arzin/css/theme-light.css
+PHASE 2/Landing UI/AgentOS_UI_Dark_Arzin/css/tokens.css
+PHASE 2/Landing UI/AgentOS_UI_Dark_Arzin/index.html
+PHASE 2/Landing UI/AgentOS_UI_Dark_Arzin/js/app.js
+PHASE 2/Landing UI/AgentOS_UI_Dark_Arzin/js/i18n.js
+PHASE 2/Landing UI/AgentOS_UI_Dark_Arzin/js/mock-data.js
+PHASE 2/Landing UI/AgentOS_UI_Dark_Arzin/js/router.js
+PHASE 2/Landing UI/AgentOS_UI_Dark_Arzin/references/arzin_reference.html
+PHASE 2/Landing UI/AgentOS_UI_Dark_Arzin/references/pedramflow_reference.html
+PHASE 2/Landing UI/AgentOS_UI_Light_PedramFlow/README.md
+PHASE 2/Landing UI/AgentOS_UI_Light_PedramFlow/assets/agentosbackg.png
+PHASE 2/Landing UI/AgentOS_UI_Light_PedramFlow/assets/agentoslogo.png
+PHASE 2/Landing UI/AgentOS_UI_Light_PedramFlow/css/app.css
+PHASE 2/Landing UI/AgentOS_UI_Light_PedramFlow/css/theme-dark.css
+PHASE 2/Landing UI/AgentOS_UI_Light_PedramFlow/css/theme-light.css
+PHASE 2/Landing UI/AgentOS_UI_Light_PedramFlow/css/tokens.css
+PHASE 2/Landing UI/AgentOS_UI_Light_PedramFlow/index.html
+PHASE 2/Landing UI/AgentOS_UI_Light_PedramFlow/js/app.js
+PHASE 2/Landing UI/AgentOS_UI_Light_PedramFlow/js/i18n.js
+PHASE 2/Landing UI/AgentOS_UI_Light_PedramFlow/js/mock-data.js
+PHASE 2/Landing UI/AgentOS_UI_Light_PedramFlow/js/router.js
+PHASE 2/Landing UI/AgentOS_UI_Light_PedramFlow/references/arzin_reference.html
+PHASE 2/Landing UI/AgentOS_UI_Light_PedramFlow/references/pedramflow_reference.html
+PHASE 2/Landing UI/agentos_wired/README.md
+PHASE 2/Landing UI/agentos_wired/docker-compose.yml
+PHASE 2/Landing UI/agentos_wired/services/governance-console-api/Dockerfile
+PHASE 2/Landing UI/agentos_wired/services/governance-console-api/app/main.py
+PHASE 2/Landing UI/agentos_wired/services/governance-console-api/pyproject.toml
+PHASE 2/Landing UI/agentos_wired/ui/README.md
+PHASE 2/Landing UI/agentos_wired/ui/assets/agentosbackg.png
+PHASE 2/Landing UI/agentos_wired/ui/assets/agentoslogo.png
+PHASE 2/Landing UI/agentos_wired/ui/css/app.css
+PHASE 2/Landing UI/agentos_wired/ui/css/theme-dark.css
+PHASE 2/Landing UI/agentos_wired/ui/css/theme-light.css
+PHASE 2/Landing UI/agentos_wired/ui/css/tokens.css
+PHASE 2/Landing UI/agentos_wired/ui/index.html
+PHASE 2/Landing UI/agentos_wired/ui/js/api.js
+PHASE 2/Landing UI/agentos_wired/ui/js/app.js
+PHASE 2/Landing UI/agentos_wired/ui/js/config.js
+PHASE 2/Landing UI/agentos_wired/ui/js/i18n.js
+PHASE 2/Landing UI/agentos_wired/ui/js/mock-data.js
+PHASE 2/Landing UI/agentos_wired/ui/js/router.js
+PHASE 2/Landing UI/agentos_wired/ui/references/arzin_reference.html
+PHASE 2/Landing UI/agentos_wired/ui/references/pedramflow_reference.html
+PHASE 2/Landing UI/services/governance-console-api/Dockerfile
+PHASE 2/Landing UI/services/governance-console-api/app/main.py
+PHASE 2/Landing UI/services/governance-console-api/pyproject.toml
+PHASE 2/Landing UI/ui/README.md
+PHASE 2/Landing UI/ui/assets/agentosbackg.png
+PHASE 2/Landing UI/ui/assets/agentoslogo.png
+PHASE 2/Landing UI/ui/css/app.css
+PHASE 2/Landing UI/ui/css/theme-dark.css
+PHASE 2/Landing UI/ui/css/theme-light.css
+PHASE 2/Landing UI/ui/css/tokens.css
+PHASE 2/Landing UI/ui/index.html
+PHASE 2/Landing UI/ui/js/api.js
+PHASE 2/Landing UI/ui/js/app.js
+PHASE 2/Landing UI/ui/js/config.js
+PHASE 2/Landing UI/ui/js/i18n.js
+PHASE 2/Landing UI/ui/js/mock-data.js
+PHASE 2/Landing UI/ui/js/router.js
+PHASE 2/Landing UI/ui/references/arzin_reference.html
+PHASE 2/Landing UI/ui/references/pedramflow_reference.html

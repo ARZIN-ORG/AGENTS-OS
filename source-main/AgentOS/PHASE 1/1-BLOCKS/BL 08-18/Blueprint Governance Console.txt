@@ -1,0 +1,247 @@
+خیلی خب. این Blueprint رسمی Governance Console – فاز ۱ است.
+طوری نوشته شده که CTO بدبین نتواند بگوید «مبهم است»، و مدیرعامل بفهمد دقیقاً کجا دستش روی دکمه است.
+این سند را باید بتوان امضا کرد و داد دست تیم.
+
+Blueprint رسمی Governance Console
+
+Agent OS / AACP – Phase 1 (Locked)
+
+هدف سند
+
+تعریف دقیق، غیرقابل تفسیر و اجرایی «Governance Console» به‌عنوان مرکز فرماندهی حاکمیتی سیستم‌عامل ایجنت‌ها، بدون ورود به اجرای مستقیم، بدون تداخل با AACP Core، و با تضمین Human-in-the-loop.
+
+۱. جایگاه Governance Console در Agent OS
+
+Governance Console یک سیستم نظارتی و کنترلی است، نه سیستم اجرایی.
+
+این کنسول:
+
+تصمیم نمی‌گیرد
+
+پیام عملیاتی Publish نمی‌کند
+
+جای AACP را نمی‌گیرد
+
+Governance Console فقط:
+
+می‌بیند
+
+مقایسه می‌کند
+
+اجازه می‌دهد انسان تصمیم نهایی را بدهد
+
+و همه چیز را مستند و قابل حساب‌کشی می‌کند
+
+۲. Scope فاز ۱ (قفل‌شده)
+
+در Scope فاز ۱ هست:
+
+مشاهده پیشنهادهای هوشمند (Recommendation)
+
+تأیید / رد انسانی
+
+مشاهده Policyها و وضعیت آن‌ها
+
+مشاهده وضعیت ایجنت‌ها
+
+مشاهده Incident / DLQ
+
+مشاهده Audit و Timeline تصمیم‌ها
+
+عمداً در Scope فاز ۱ نیست:
+
+تعریف Policy پیچیده جدید (فقط فعال/غیرفعال یا Threshold محدود)
+
+ساخت ایجنت جدید
+
+اجرای مستقیم دستور
+
+Workflow Builder
+
+Automation بدون تأیید انسان
+
+این حذف‌ها آگاهانه و حاکمیتی هستند.
+
+۳. معماری کلان Governance Console
+
+۳.۱ اجزای اصلی (سرویس‌محور)
+
+Governance Console API
+
+Backend اختصاصی
+
+Read-heavy
+
+Event-driven (Consume از AACP)
+
+Stateless
+
+Audit Query Service
+
+Query روی Audit Sink
+
+Timeline-based
+
+Chain-hash aware
+
+Decision Oversight Service
+
+تجمیع Recommendation + Permit + Human Action
+
+ساخت Decision Graph
+
+Policy View & Control Service
+
+مشاهده Policy Version
+
+تغییر محدود (Enable / Disable / Threshold)
+
+Versioned
+
+Agent Registry View
+
+لیست ایجنت‌ها
+
+Scope، Channel، Version، Status
+
+Suspend / Resume (حاکمیتی)
+
+Incident & DLQ Viewer
+
+خطاها
+
+Fail-Closedها
+
+Chaos / Fault events
+
+۴. اصل طلایی تعامل
+
+Governance Console هیچ‌وقت مستقیماً به AACP Publish نمی‌کند.
+
+هر Action انسانی:
+
+Console Action → Intent → Human Confirm → AACP (Permit → Execution) → Audit 
+
+اگر این زنجیره شکسته شود، سیستم Fail-Closed می‌شود.
+
+۵. Role Model (غیرقابل مذاکره)
+
+۵.۱ Board / CEO
+
+مشاهده کلان
+
+KPI حاکمیتی
+
+Heatmap ریسک
+
+بدون Action مستقیم
+
+۵.۲ CTO
+
+مشاهده فنی
+
+Incident
+
+Health
+
+Policy Status
+
+بدون Override انسانی
+
+۵.۳ Compliance / Risk
+
+Audit کامل
+
+DLQ
+
+Trace
+
+گزارش‌گیری رسمی
+
+۵.۴ Operator
+
+بررسی پیشنهاد
+
+تأیید یا رد
+
+بدون تغییر Policy
+
+۵.۵ Auditor (Read-only)
+
+فقط مشاهده
+
+بدون هیچ Action
+
+۶. Flowهای حیاتی (قفل‌شده)
+
+۶.۱ Flow پیشنهاد هوشمند
+
+Agent → Recommendation Plane → Governance Console (View) → Human Review → Approve / Reject → Permit Service → Execution → Audit Sink 
+
+۶.۲ Flow Incident
+
+Failure / DLQ → Governance Console → Trace → Root Cause → Human Decision 
+
+۶.۳ Flow Policy Change (محدود)
+
+Policy View → Change Threshold / Enable → Version bump → Activate → Audit 
+
+۷. امنیت و دسترسی
+
+SSO + MFA
+
+RBAC + ABAC
+
+mTLS
+
+NetworkPolicy
+
+Immutable Logs
+
+Chain Hash
+
+Governance Console امن‌تر از بقیه سیستم است، چون نقطه انسانی است.
+
+۸. تعریف Done (DoD) فاز ۱
+
+Governance Console فاز ۱ تمام است اگر و فقط اگر:
+
+هیچ Recommendation بدون Trace دیده نشود
+
+هیچ Action انسانی بدون Audit ثبت نشود
+
+هیچ پیام عملیاتی مستقیم از Console خارج نشود
+
+CTO بتواند Timeline یک تصمیم را End-to-End ببیند
+
+Auditor بتواند بدون سؤال «چه شد؟» گزارش بگیرد
+
+۹. نتیجه حاکمیتی
+
+بعد از این فاز:
+
+اضافه‌کردن ایجنت = ریسک کنترل‌شده
+
+رشد سیستم = قابل دفاع
+
+خطا = قابل توضیح
+
+تصمیم = قابل حساب‌کشی
+
+وضعیت سند
+
+قفل شد.
+مبنای اجرایی فاز بعدی است.
+تغییر فقط با تصمیم حاکمیتی مجاز است.
+
+گام بعدی (فقط یکی)
+
+یا:
+
+تبدیل این Blueprint به BLهای اجرایی (BL-20 به بعد)
+یا:
+
+ارائه لیست ایجنت‌های واقعی پیشنهادی فاز ۲
+
+تو بگو کدام.
+

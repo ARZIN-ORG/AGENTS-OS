@@ -1,0 +1,17 @@
+:root[data-theme="dark"]{
+  --c-bg: #070B14;
+  --c-bg2: rgba(255,255,255,0.04);
+  --c-surface: rgba(14,18,32,0.88);
+  --c-surface2: rgba(18,24,44,0.78);
+  --c-border: rgba(255,255,255,0.08);
+  --c-text: rgba(255,255,255,0.92);
+  --c-text2: rgba(255,255,255,0.72);
+  --c-text3: rgba(255,255,255,0.55);
+  --c-accent: #62D2FF;
+  --c-accent2: #EAC162;
+  --c-danger: #FF5C7A;
+  --c-ok: #37D67A;
+  --c-warn: #FFB020;
+  --c-chip: rgba(98,210,255,0.12);
+  --c-backdrop: rgba(0,0,0,0.55);
+}

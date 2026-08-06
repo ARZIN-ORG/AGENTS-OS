@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: permit_service
+  namespace: aacp-phase1
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: permit_service
+  template:
+    metadata:
+      labels:
+        app: permit_service
+    spec:
+      containers:
+        - name: permit_service
+          image: aacp/permit_service:v1
+          ports:
+            - containerPort: 8000
+          env:
+            - name: AACP_DEV_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: aacp-dev-secret
+                  key: secret
+          readinessProbe:
+            httpGet:
+              path: /readyz
+              port: 8000
+            initialDelaySeconds: 3
+            periodSeconds: 5
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: 8000
+            initialDelaySeconds: 3
+            periodSeconds: 10
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: permit_service
+  namespace: aacp-phase1
+spec:
+  selector:
+    app: permit_service
+  ports:
+    - name: http
+      port: 8000
+      targetPort: 8000

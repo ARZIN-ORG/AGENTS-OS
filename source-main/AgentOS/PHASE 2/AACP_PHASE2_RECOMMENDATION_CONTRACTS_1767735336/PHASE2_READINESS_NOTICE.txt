@@ -1,0 +1,9 @@
+
+Phase-2 Readiness Announcement
+
+Phase-2 of the Agent Operating System is now enabled in a controlled scope.
+Three advisory domains are activated under recommendation-only contracts:
+Operational Risk, Performance Variance, and Capacity & Cost Trend.
+
+No autonomous decision or execution is permitted.
+All outputs remain subject to explicit human decision via Governance Console.

@@ -1,0 +1,33 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: aacp-alerts
+  namespace: arzin-aacp
+spec:
+  groups:
+  - name: aacp.rules
+    rules:
+    - alert: AacpFailClosedSpike
+      expr: increase(aacp_fail_closed_total[5m]) > 0
+      for: 2m
+      labels:
+        severity: critical
+      annotations:
+        summary: "AACP Fail-Closed spike detected"
+        description: "Fail-closed events observed in last 5 minutes. Investigate permit/policy/registry/audit availability."
+    - alert: AacpAuditPersistFailures
+      expr: increase(aacp_audit_persist_fail_total[5m]) > 0
+      for: 1m
+      labels:
+        severity: critical
+      annotations:
+        summary: "AACP audit persist failures"
+        description: "Audit records are failing to persist. System must reject traffic; fix audit sink immediately."
+    - alert: AacpPermitLatencyHighP95
+      expr: histogram_quantile(0.95, sum(rate(aacp_permit_latency_ms_bucket[5m])) by (le)) > 150
+      for: 5m
+      labels:
+        severity: warning
+      annotations:
+        summary: "AACP permit latency p95 is high"
+        description: "Permit service latency p95 > 150ms for 5 minutes."

@@ -1,0 +1,19 @@
+{
+  "id": "os/os-audit-trace",
+  "path": "/os/os-audit-trace",
+  "roles": [
+    "governance",
+    "admin",
+    "security",
+    "ops"
+  ],
+  "mode": "read",
+  "blDependencies": [
+    "bl08"
+  ],
+  "enforce": {
+    "roleToView": true,
+    "actionToPermit": false,
+    "auditAware": true
+  }
+}
