@@ -1,0 +1,18 @@
+{
+  "id": "infra/infra-security-posture",
+  "path": "/infra/infra-security-posture",
+  "roles": [
+    "security",
+    "admin"
+  ],
+  "mode": "suggest",
+  "blDependencies": [
+    "bl19",
+    "bl07"
+  ],
+  "enforce": {
+    "roleToView": true,
+    "actionToPermit": false,
+    "auditAware": true
+  }
+}

@@ -1,0 +1,410 @@
+        @page { size: A4; margin: 0; }
+        body {
+            font-family: 'Vazirmatn', 'Segoe UI', system-ui, sans-serif;
+            margin: 0; padding: 0; background: #f8fafc; color: #1e293b; line-height: 1.8;
+            display: flex; justify-content: center; align-items: flex-start; min-height: 100vh;
+            text-align: right;
+        }
+        .a4-page {
+            width: 210mm; min-height: 297mm; margin: 20px auto; background: white;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08); position: relative; box-sizing: border-box;
+            padding-top: 28mm; padding-bottom: 25mm; border-radius: 2px; overflow: hidden;
+            background-image: linear-gradient(90deg, transparent 99.5%, #f1f5f9 99.5%);
+            background-size: 10mm 100%; background-position: center;
+        }
+        .document-header {
+            position: absolute; top: 0; width: 100%; background: linear-gradient(135deg, #1a3a1a 0%, #2d5a27 100%);
+            color: white; padding: 5mm 15mm 4mm; box-sizing: border-box; border-bottom: 4px solid #0e9aa7;
+            box-shadow: 0 6px 20px rgba(45, 90, 39, 0.2); text-align: center; z-index: 100;
+            display: flex; align-items: center; justify-content: center; gap: 10px;
+        }
+        .header-title { font-size: 22pt; font-weight: 800; color: white; text-shadow: 0 2px 4px rgba(0,0,0,0.3); letter-spacing: 0; margin: 0; }
+        .header-subtitle { font-size: 14pt; opacity: 0.9; margin-top: 2mm; color: #e2e8f0; line-height: 1.5; }
+        .header-accent { position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, #0e9aa7, #2d5a27); }
+        .document-body { padding: 8mm 20mm; height: calc(297mm - 53mm); overflow-y: auto; box-sizing: border-box; position: relative; line-height: 1.8; }
+        
+        .section { margin-bottom: 10mm; }
+        .section h2 { color: #2d5a27; font-size: 18pt; border-bottom: 2px solid #0e9aa7; padding-bottom: 3mm; margin-bottom: 6mm; text-align: right; }
+        .section p { text-align: justify; margin-bottom: 5mm; font-size: 12pt; line-height: 1.8; }
+        blockquote { border-right: 4px solid #0e9aa7; border-left: none; background: #f0f9f9; padding: 6mm 8mm; margin: 6mm 0; border-radius: 8px 0 0 8px; font-style: italic; color: #1a3a1a; line-height: 1.8; }
+        ul, ol { padding-right: 25px; padding-left: 0; margin: 5mm 0; }
+        li { margin-bottom: 3mm; line-height: 1.8; text-align: right; }
+        .kpi-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 4mm; margin: 6mm 0; }
+        .kpi-item { background: #f0f9f9; padding: 4mm; border-radius: 8px; border-right: 3px solid #2d5a27; text-align: center; line-height: 1.6; }
+        .flag-container { display: flex; align-items: center; justify-content: center; }
+        .flag { width: 45px; height: 28px; border-radius: 3px; box-shadow: 0 2px 6px rgba(0,0,0,0.2); flex-shrink: 0; }
+        .phase-timeline { margin: 8mm 0; }
+        .phase { background: #f8fafc; border-right: 4px solid #2d5a27; border-left: none; padding: 5mm; margin-bottom: 5mm; border-radius: 8px 0 0 8px; }
+        .phase h3 { color: #1e293b; margin-top: 0; text-align: right; }
+        .highlight-box { background: #f0f9f9; border: 1px solid #0e9aa7; padding: 8mm; border-radius: 10px; margin: 8mm 0; text-align: right; }
+        
+        /* ==================== استایل‌های جدید فوتر ==================== */
+        .document-footer {
+            position: absolute; bottom: 0; width: 100%; 
+            background: linear-gradient(to top, #1a3a1a 0%, #2d3b2d 100%);
+            color: #e2e8f0; padding: 6mm 15mm; box-sizing: border-box; 
+            border-top: 4px solid #0e9aa7; font-family: 'Vazirmatn', sans-serif;
+            z-index: 100;
+        }
+        
+        .narrative-section {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(14, 154, 167, 0.3);
+            border-radius: 8px;
+            padding: 4mm 6mm;
+            margin-bottom: 5mm;
+            text-align: center;
+        }
+        
+        .narrative-title {
+            color: #0e9aa7;
+            font-size: 12pt;
+            font-weight: 700;
+            margin-bottom: 3mm;
+            text-align: center;
+        }
+        
+        .narrative-subtitle {
+            color: #cbd5e1;
+            font-size: 10.5pt;
+            margin-top: 1mm;
+            text-align: center;
+            font-weight: 500;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5mm;
+            margin-bottom: 5mm;
+        }
+        
+        .footer-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 4mm;
+        }
+        
+        .ownership-card {
+            border-right: 3px solid #0e9aa7;
+        }
+        
+        .copyright-card {
+            border-right: 3px solid #2d5a27;
+        }
+        
+        .card-title {
+            color: #0e9aa7;
+            font-size: 11pt;
+            font-weight: 700;
+            margin-bottom: 3mm;
+            padding-bottom: 2mm;
+            border-bottom: 1px solid rgba(14, 154, 167, 0.3);
+            text-align: right;
+        }
+        
+        .owner-info {
+            text-align: right;
+            line-height: 1.6;
+        }
+        
+        .owner-name {
+            color: #ffffff;
+            font-size: 11pt;
+            font-weight: 700;
+            margin-bottom: 1mm;
+        }
+        
+        .owner-title, .ownership-domain {
+            color: #cbd5e1;
+            font-size: 10pt;
+        }
+        
+        .ownership-domain {
+            color: #94a3b8;
+            font-size: 9.5pt;
+            margin-top: 1mm;
+            font-style: italic;
+        }
+        
+        .copyright-text {
+            text-align: justify;
+            line-height: 1.6;
+            font-size: 9.5pt;
+            color: #cbd5e1;
+        }
+        
+        .declaration-section {
+            background: rgba(45, 90, 39, 0.1);
+            border: 1px solid rgba(14, 154, 167, 0.3);
+            border-radius: 8px;
+            padding: 5mm;
+            margin: 5mm 0;
+        }
+        
+        .declaration-title {
+            color: #0e9aa7;
+            font-size: 11pt;
+            font-weight: 700;
+            margin-bottom: 3mm;
+            text-align: right;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .declaration-text {
+            text-align: justify;
+            line-height: 1.7;
+            font-size: 10pt;
+            color: #e2e8f0;
+        }
+        
+        .contact-section {
+            background: rgba(26, 58, 26, 0.8);
+            border: 1px solid rgba(14, 154, 167, 0.2);
+            border-radius: 8px;
+            padding: 3mm 4mm;
+            margin-bottom: 4mm;
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 2mm;
+            margin-bottom: 2mm;
+            font-size: 9.5pt;
+        }
+        
+        .contact-item {
+            color: #e2e8f0;
+        }
+        
+        .contact-item strong {
+            color: #ffffff;
+            font-weight: 600;
+        }
+        
+        .contact-separator {
+            color: #0e9aa7;
+            opacity: 0.5;
+        }
+        
+        .document-info {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 2mm;
+            font-size: 9.5pt;
+            color: #cbd5e1;
+        }
+        
+        .info-separator {
+            color: #64748b;
+        }
+        
+        .document-info strong {
+            color: #ffffff;
+        }
+        
+        .proposal-info {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 3mm;
+            text-align: center;
+        }
+        
+        .proposal-details {
+            font-size: 9.5pt;
+            color: #cbd5e1;
+            margin-bottom: 2mm;
+        }
+        
+        .english-copyright {
+            font-size: 8.5pt;
+            color: #0e9aa7;
+            text-align: left;
+            direction: ltr;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+        }
+        
+        /* بهبودهای ریسپانسیو برای موبایل */
+        @media (max-width: 768px) {
+            body {
+                align-items: flex-start;
+                padding: 10px;
+                background: #f1f5f9;
+            }
+            .a4-page {
+                width: 100% !important;
+                min-height: auto !important;
+                margin: 0 auto !important;
+                padding: 18mm 5mm 20mm !important;
+                box-shadow: 0 5px 20px rgba(0,0,0,0.1) !important;
+                border-radius: 12px;
+                background-image: none;
+            }
+            .document-header {
+                padding: 4mm 8mm !important;
+                flex-direction: column;
+                gap: 8px;
+                position: relative;
+                border-radius: 12px 12px 0 0;
+            }
+            .header-title {
+                font-size: 16pt !important;
+                line-height: 1.4;
+            }
+            .header-subtitle {
+                font-size: 11pt !important;
+                line-height: 1.5;
+                margin-top: 1mm;
+            }
+            .document-body {
+                padding: 6mm 8mm !important;
+                height: auto !important;
+                overflow: visible !important;
+            }
+            .document-footer {
+                position: relative;
+                margin-top: 10mm;
+                border-radius: 0 0 12px 12px;
+                padding: 4mm 8mm !important;
+                font-size: 8pt;
+            }
+            .section {
+                margin-bottom: 8mm;
+            }
+            .section h2 {
+                font-size: 15pt !important;
+                padding-bottom: 2mm;
+                margin-bottom: 4mm;
+            }
+            .section p {
+                font-size: 11pt !important;
+                line-height: 1.7;
+            }
+            .kpi-grid {
+                grid-template-columns: 1fr !important;
+                gap: 3mm;
+            }
+            .kpi-item {
+                padding: 3mm;
+                font-size: 10.5pt;
+            }
+            blockquote {
+                padding: 4mm 5mm;
+                margin: 4mm 0;
+                font-size: 10.5pt;
+            }
+            .flag {
+                width: 35px;
+                height: 22px;
+            }
+            .highlight-box {
+                padding: 5mm;
+                margin: 5mm 0;
+            }
+            ul, ol {
+                padding-right: 20px;
+            }
+            
+            /* ریسپانسیو فوتر در موبایل */
+            .document-footer {
+                padding: 4mm 6mm !important;
+            }
+            
+            .footer-grid {
+                grid-template-columns: 1fr !important;
+                gap: 3mm !important;
+            }
+            
+            .footer-card {
+                padding: 3mm !important;
+            }
+            
+            .pillars-container {
+                flex-direction: column;
+                gap: 1.5mm;
+            }
+            
+            .pillar-separator {
+                display: none;
+            }
+            
+            .contact-info, .document-info {
+                flex-direction: column;
+                gap: 1mm;
+                text-align: center;
+            }
+            
+            .contact-separator, .info-separator {
+                display: none;
+            }
+            
+            .declaration-section {
+                padding: 3mm !important;
+            }
+            
+            .declaration-text {
+                font-size: 9pt !important;
+                line-height: 1.6;
+            }
+            
+            .narrative-subtitle {
+                font-size: 9.5pt !important;
+            }
+        }
+        
+        /* ریسپانسیو برای موبایل افقی */
+        @media (max-width: 1024px) and (orientation: landscape) {
+            .a4-page {
+                padding-top: 5mm !important;
+                padding-bottom: 5mm !important;
+            }
+            
+            .document-header {
+                position: relative !important;
+                border-radius: 12px 12px 0 0 !important;
+                margin-bottom: 5mm !important;
+            }
+            
+            .document-footer {
+                position: relative !important;
+                margin-top: 10mm !important;
+                border-radius: 0 0 12px 12px !important;
+            }
+            
+            .document-body {
+                height: auto !important;
+                overflow: visible !important;
+                min-height: auto !important;
+            }
+        }
+        
+        /* بهینه‌سازی برای تبلت */
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .a4-page {
+                width: 90% !important;
+                margin: 15px auto !important;
+            }
+            .document-body {
+                padding: 6mm 15mm !important;
+            }
+            .document-footer {
+                padding: 5mm 10mm !important;
+            }
+        }
+        
+        @media print {
+            body { background: none; margin: 0; font-family: 'Vazirmatn', 'B Nazanin', 'Iranian Sans', sans-serif; }
+            .a4-page { margin: 0; box-shadow: none; page-break-after: always; min-height: 297mm; padding-top: 25mm; padding-bottom: 20mm; width: 210mm !important; }
+            .document-header, .document-footer { position: fixed; background: #fff !important; color: #000 !important; border-color: #333 !important; }
+            .header-title, .header-subtitle { color: #000 !important; }
+            .section h2 { color: #000 !important; border-color: #666 !important; }
+            blockquote { border-color: #666 !important; background: none !important; color: #333 !important; }
+            .kpi-item { background: none !important; border: 1pt solid #ccc !important; }
+        }

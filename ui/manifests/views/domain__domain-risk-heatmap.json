@@ -1,0 +1,18 @@
+{
+  "id": "domain/domain-risk-heatmap",
+  "path": "/domain/domain-risk-heatmap",
+  "roles": [
+    "manager",
+    "governance",
+    "admin"
+  ],
+  "mode": "suggest",
+  "blDependencies": [
+    "bl13"
+  ],
+  "enforce": {
+    "roleToView": true,
+    "actionToPermit": false,
+    "auditAware": true
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "id": "interaction/interaction-explanation",
+  "path": "/interaction/interaction-explanation",
+  "roles": [
+    "viewer",
+    "manager",
+    "governance",
+    "admin"
+  ],
+  "mode": "read",
+  "blDependencies": [
+    "bl13",
+    "bl07"
+  ],
+  "enforce": {
+    "roleToView": true,
+    "actionToPermit": false,
+    "auditAware": true
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "id": "os/os-governance-console",
+  "path": "/os/os-governance-console",
+  "roles": [
+    "governance",
+    "admin"
+  ],
+  "mode": "execute",
+  "blDependencies": [
+    "bl19",
+    "bl07",
+    "bl08"
+  ],
+  "enforce": {
+    "roleToView": true,
+    "actionToPermit": true,
+    "auditAware": true
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "id": "domain/domain-scenario-planner",
+  "path": "/domain/domain-scenario-planner",
+  "roles": [
+    "manager",
+    "ops",
+    "admin"
+  ],
+  "mode": "suggest",
+  "blDependencies": [
+    "bl13"
+  ],
+  "enforce": {
+    "roleToView": true,
+    "actionToPermit": false,
+    "auditAware": true
+  }
+}

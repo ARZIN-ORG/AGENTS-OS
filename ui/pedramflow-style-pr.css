@@ -1,0 +1,89 @@
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box;}
+    body{
+      font-family: IranYekan, "Segoe UI", sans-serif;
+      background:radial-gradient(circle at top,#0a0f1f,#02030a 60%,#000);
+      color:#e9edff;
+      line-height:1.9;
+      text-align: justify;
+    }
+    .page{max-width:960px;margin:0 auto;padding:48px 22px 60px;}
+    h1{
+      font-size:30px;font-weight:700;color:#eac162;
+      margin-bottom:10px;letter-spacing:0.01em;
+      text-align: center;
+    }
+    .subtitle{
+      font-size:16px;color:#b8bdd9;margin-bottom:32px;line-height:1.9;
+      text-align: justify;
+    }
+    .badge{
+      display:inline-block;
+      font-size:12px;letter-spacing:0.13em;text-transform:uppercase;
+      border:1px solid rgba(234,193,98,0.38);
+      border-radius:999px;padding:6px 14px;margin-bottom:22px;
+      color:#eac162;background:rgba(234,193,98,0.07);
+      text-align: center;
+      width: 100%;
+    }
+    .grid{
+      display:grid;grid-template-columns:1fr;gap:24px;
+    }
+    @media(min-width:820px){
+      .grid{grid-template-columns:repeat(3,1fr);}
+    }
+    .card{
+      border-radius:18px;
+      border:1px solid rgba(255,255,255,0.07);
+      background:linear-gradient(155deg,rgba(9,12,28,0.95),rgba(4,5,20,0.97));
+      padding:22px 18px;
+      box-shadow:0 20px 45px rgba(0,0,0,0.78);
+      text-align: justify;
+    }
+    .card-title{
+      font-size:13px;font-weight:600;color:#9da3c8;
+      letter-spacing:0.14em;text-transform:uppercase;margin-bottom:10px;
+      text-align: right;
+    }
+    h2{
+      font-size:18px;margin-bottom:6px;color:#f7cf6f;
+      text-align: justify;
+    }
+    h3{
+      font-size:14px;margin-bottom:12px;color:#d5daf7;
+      text-align: justify;
+    }
+    p{
+      font-size:14px;margin-bottom:12px;color:#d5daf7;line-height:1.9;
+      text-align: justify;
+    }
+    .pill-list{
+      display:flex;flex-wrap:wrap;gap:8px;margin-top:6px;
+      justify-content: flex-end;
+    }
+    .pill{
+      padding:4px 11px;font-size:12px;border-radius:999px;
+      border:1px solid rgba(149,227,255,0.45);
+      color:#c2f0ff;background:rgba(149,227,255,0.06);
+      text-align: center;
+    }
+    .link-row{
+      margin-top:14px;font-size:13px;color:#b7bcd9;
+      text-align: right;
+    }
+    a{color:#eac162;text-decoration:none;}
+    a:hover{text-decoration:underline;}
+    .footer{
+      margin-top:42px;padding-top:16px;text-align:center;
+      border-top:1px solid rgba(255,255,255,0.06);
+      font-size:13px;color:#969dc0;
+    }
+    /* جهت‌دهی لیست‌ها */
+    ul, ol {
+      text-align: right;
+      padding-right: 20px;
+    }
+    li {
+      text-align: right;
+    }
+  </style>

@@ -1,0 +1,11 @@
+
+domain_id: phase2.capacity_cost_trend
+mode: recommendation_only
+allowed_capabilities:
+  - trend_projection
+  - scenario_analysis
+prohibited:
+  - autoscaling
+  - budget_enforcement
+governance:
+  human_approval_required: true

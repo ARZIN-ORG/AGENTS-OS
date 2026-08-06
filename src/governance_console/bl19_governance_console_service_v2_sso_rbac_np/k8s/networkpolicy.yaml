@@ -1,0 +1,40 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: bl19-governance-console-netpol
+spec:
+  podSelector:
+    matchLabels:
+      app: bl19-governance-console
+  policyTypes:
+    - Ingress
+    - Egress
+  ingress:
+    - from:
+        # Allow only from management namespace/pods (align with your standards)
+        - namespaceSelector:
+            matchLabels:
+              access: management
+        - podSelector:
+            matchLabels:
+              access: management
+      ports:
+        - protocol: TCP
+          port: 8080
+  egress:
+    # Allow DNS
+    - to:
+        - namespaceSelector: {}
+      ports:
+        - protocol: UDP
+          port: 53
+        - protocol: TCP
+          port: 53
+    # Allow access to audit sink only
+    - to:
+        - podSelector:
+            matchLabels:
+              app: audit-sink
+      ports:
+        - protocol: TCP
+          port: 8080

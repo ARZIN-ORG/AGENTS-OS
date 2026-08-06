@@ -1,0 +1,20 @@
+{
+  "id": "os/os-dashboard",
+  "path": "/os/os-dashboard",
+  "roles": [
+    "viewer",
+    "ops",
+    "security",
+    "governance",
+    "admin"
+  ],
+  "mode": "read",
+  "blDependencies": [
+    "bl19"
+  ],
+  "enforce": {
+    "roleToView": true,
+    "actionToPermit": false,
+    "auditAware": true
+  }
+}

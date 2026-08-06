@@ -1,0 +1,18 @@
+{
+  "id": "interaction/interaction-intent-input",
+  "path": "/interaction/interaction-intent-input",
+  "roles": [
+    "manager",
+    "governance",
+    "admin"
+  ],
+  "mode": "suggest",
+  "blDependencies": [
+    "bl17"
+  ],
+  "enforce": {
+    "roleToView": true,
+    "actionToPermit": false,
+    "auditAware": true
+  }
+}

@@ -1,0 +1,76 @@
+services:
+  zookeeper:
+    image: confluentinc/cp-zookeeper:7.4.0
+    container_name: zookeeper
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+    networks:
+      - agentos-network
+
+  kafka:
+    image: confluentinc/cp-kafka:7.4.0
+    container_name: kafka
+    depends_on:
+      - zookeeper
+    ports:
+      - "9092:9092"
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+    networks:
+      - agentos-network
+
+  agent-registry:
+    image: arzin/bl06-agent-registry:1.0
+    container_name: agent-registry
+    ports:
+      - "8080:8080"
+    restart: always
+    networks:
+      - agentos-network
+
+  policy-plane:
+    image: arzin/bl07-policy-plane:1.0
+    container_name: policy-plane
+    ports:
+      - "8081:8081"
+    restart: always
+    networks:
+      - agentos-network
+
+  permit-service:
+    image: arzin/bl08-permit-service:1.0
+    container_name: permit-service
+    ports:
+      - "8082:8082"
+    restart: always
+    networks:
+      - agentos-network
+
+  audit-sink:
+    image: arzin/bl08-audit-sink:2.0
+    container_name: audit-sink
+    ports:
+      - "8083:8083"
+    restart: always
+    networks:
+      - agentos-network
+
+  intent-gateway:
+    build: ../src/domain_services/intent_gateway
+    container_name: intent-gateway
+    environment:
+      - KAFKA_BROKER=kafka:9092
+      - INPUT_TOPIC_PATTERN=agent-.*-inputs
+    depends_on:
+      - kafka
+    restart: always
+    networks:
+      - agentos-network
+
+networks:
+  agentos-network:
+    driver: bridge

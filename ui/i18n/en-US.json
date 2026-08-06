@@ -1,0 +1,22 @@
+{
+  "nav.os": "OS-Native Governance",
+  "nav.infra": "Infrastructure",
+  "nav.domain": "Domain",
+  "nav.interaction": "Interaction",
+  "ui.denied": "Access denied",
+  "ui.loading": "Loading…",
+  "os.gov_console": "Governance Console",
+  "os.policy_browser": "Policy Browser",
+  "os.permit_review": "Permit Review",
+  "os.audit_trace": "Audit Trace",
+  "os.channel_manager": "Channel Manager",
+  "os.agent_registry": "Agent Registry",
+  "infra.overview": "Infrastructure Overview",
+  "infra.kafka": "Kafka Health",
+  "infra.k8s": "K8s Topology",
+  "infra.security": "Security Posture",
+  "domain.reco": "Recommendations",
+  "domain.scenario": "Scenario Planner",
+  "interaction.intent_input": "Intent Input",
+  "interaction.exec_approval": "Execution Approval"
+}
