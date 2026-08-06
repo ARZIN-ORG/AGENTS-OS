@@ -1,0 +1,8 @@
+{
+  "mode": "real",
+  "apiBaseUrl": "http://localhost:8090",
+  "requestTimeoutMs": 8000,
+  "auth": {
+    "enabled": false
+  }
+}

@@ -42,7 +42,7 @@ async function loadDataFor(hash){
 
 function getSystemPills(){
   if(STATE.mode !== 'real' || !STATE.overview){
-    return { phase: MOCK.system.phase, build: MOCK.system.build };
+    return { phase: STATE.overview?.system?.phase || "Phase 1", build: STATE.overview?.system?.build || "v1.0.0-rc2" };
   }
   return {
     phase: (STATE.overview.system && STATE.overview.system.phase) ? STATE.overview.system.phase : 'phase1',
@@ -130,7 +130,7 @@ function badge(status){
 }
 
 function renderOverview(){
-  const a = MOCK.agents;
+  const a = STATE.agents || [ ];
   const ok=a.filter(x=>x.status==='ok').length;
   const warn=a.filter(x=>x.status==='warn').length;
   const fail=a.filter(x=>x.status==='fail').length;
@@ -142,7 +142,7 @@ function renderOverview(){
       <p>نمایش وضعیت کنترل‌پلین، قوانین قفل‌شده، و مسیر «پیشنهاد → تأیید انسان → Permit → Publish» بدون هیچ میان‌بُر.</p>
     </div>
     <div class="split">
-      <span class="pill">${esc(MOCK.system.phase)}</span>
+      <span class="pill">${esc(STATE.overview?.system?.phase || "Phase 1")}</span>
       <button class="btn" id="openAudit">Quick Audit</button>
       <button class="btn primary" id="newPermit">New Permit</button>
     </div>
@@ -158,14 +158,14 @@ function renderOverview(){
       <h3>Channels</h3>
       <p class="small">کانال‌های موازی AACP برای حذف نقطه شکست واحد و جداسازی بار/ریسک.</p>
       <div style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap">
-        ${MOCK.channels.map(c=>`<span class="badge ${c.status==='warn'?'warn':''}"><span class="dot"></span>${esc(c.id)} · ${esc(c.sla)}</span>`).join('')}
+        ${STATE.channels || [ ].map(c=>`<span class="badge ${c.status==='warn'?'warn':''}"><span class="dot"></span>${esc(c.id)} · ${esc(c.sla)}</span>`).join('')}
       </div>
     </div>
     <div class="card" style="grid-column: span 4">
       <h3>Policies (Locked)</h3>
       <p class="small">قوانین غیرقابل دورزدنِ فاز ۱.</p>
       <div style="margin-top:10px;display:flex;flex-direction:column;gap:8px">
-        ${MOCK.policies.map(p=>`<div class="split"><span>${esc(p.id)} · ${esc(p.name)}</span><span class="pill">v${esc(p.version)}</span></div>`).join('')}
+        ${STATE.policies || [ ].map(p=>`<div class="split"><span>${esc(p.id)} · ${esc(p.name)}</span><span class="pill">v${esc(p.version)}</span></div>`).join('')}
       </div>
     </div>
 
@@ -177,7 +177,7 @@ function renderOverview(){
       <table class="table" aria-label="audit table">
         <thead><tr><th>Timestamp</th><th>Trace</th><th>Event</th><th>Actor</th><th>Channel</th></tr></thead>
         <tbody>
-          ${MOCK.audit.map(r=>`
+          ${STATE.audit || [ ].map(r=>`
             <tr>
               <td>${esc(r.ts)}</td>
               <td><code>${esc(r.trace)}</code></td>
@@ -194,7 +194,7 @@ function renderOverview(){
 }
 
 function renderAgents(){
-  const rows = MOCK.agents.map(a=>`
+  const rows = STATE.agents || [ ].map(a=>`
     <tr>
       <td>${esc(a.layer)}</td>
       <td><b>${esc(a.name)}</b><div class="small">${esc(a.code)} · owner=${esc(a.owner)}</div></td>
@@ -237,7 +237,7 @@ function renderPolicies(){
       <table class="table">
         <thead><tr><th>ID</th><th>Name</th><th>Version</th><th>Status</th></tr></thead>
         <tbody>
-          ${MOCK.policies.map(p=>`
+          ${STATE.policies || [ ].map(p=>`
             <tr>
               <td><code>${esc(p.id)}</code></td>
               <td>${esc(p.name)}</td>
@@ -266,7 +266,7 @@ function renderPermits(){
     <table class="table">
       <thead><tr><th>ID</th><th>Subject</th><th>Risk</th><th>Status</th><th>Requested By</th></tr></thead>
       <tbody>
-        ${MOCK.permits.map(p=>`
+        ${STATE.permits || [ ].map(p=>`
           <tr>
             <td><code>${esc(p.id)}</code></td>
             <td>${esc(p.subject)}</td>
@@ -296,7 +296,7 @@ function renderAudit(){
       <h3>Recent</h3>
       <table class="table">
         <thead><tr><th>Timestamp</th><th>Trace</th><th>Event</th><th>Actor</th><th>Channel</th></tr></thead>
-        <tbody>${MOCK.audit.map(r=>`
+        <tbody>${STATE.audit || [ ].map(r=>`
           <tr>
             <td>${esc(r.ts)}</td><td><code>${esc(r.trace)}</code></td><td>${esc(r.event)}</td><td>${esc(r.actor)}</td><td>${esc(r.channel)}</td>
           </tr>`).join('')}</tbody>
@@ -319,7 +319,7 @@ function renderChannels(){
       </div>
     </div>
     <div class="grid">
-      ${MOCK.channels.map(c=>`
+      ${STATE.channels || [ ].map(c=>`
         <div class="card" style="grid-column: span 6">
           <div class="split">
             <h3 style="margin:0">${esc(c.id)}</h3>
@@ -451,7 +451,7 @@ function wireRouteSpecific(hash){
     if(input && tbody){
       input.addEventListener('input', ()=>{
         const q=input.value.trim().toLowerCase();
-        const rows=MOCK.agents
+        const rows=STATE.agents || [ ]
           .filter(a => !q || a.name.toLowerCase().includes(q) || a.layer.toLowerCase().includes(q))
           .map(a=>`
             <tr>
@@ -482,8 +482,8 @@ function bootstrap(){
     setActiveNav(hash);
     $('#view').innerHTML=viewFor(hash);
     wireRouteSpecific(hash);
-    $('#statusPill').textContent = MOCK.system.phase;
-    $('#buildPill').textContent = MOCK.system.build;
+    $('#statusPill').textContent = STATE.overview?.system?.phase || "Phase 1";
+    $('#buildPill').textContent = STATE.overview?.system?.build || "v1.0.0-rc2";
   });
 }
 bootstrap();
