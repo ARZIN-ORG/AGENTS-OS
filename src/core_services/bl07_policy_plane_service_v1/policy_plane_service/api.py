@@ -31,7 +31,7 @@ def _to_out(p) -> PolicyOut:
         status=p.status.value,
         scope=p.scope,
         constraints=p.constraints,
-        metadata=p.metadata,
+        metadata=p.policy_metadata,
         created_at=p.created_at,
     )
 
@@ -65,7 +65,7 @@ def create_policy_ep(req: Request, body: PolicyCreate):
                 status=body.status,
                 scope=body.scope.model_dump(),
                 constraints=body.constraints.model_dump(),
-                metadata=body.metadata,
+                metadata=body.policy_metadata,
                 actor=actor,
                 trace_id=trace_id,
             )

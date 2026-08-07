@@ -41,7 +41,7 @@ def _to_out(a) -> AgentOut:
         status=a.status,
         decision_classes=a.decision_classes,
         channels=a.channels,
-        metadata=a.metadata,
+        metadata=a.agent_metadata,
         version=a.version,
         created_at=a.created_at,
         updated_at=a.updated_at,

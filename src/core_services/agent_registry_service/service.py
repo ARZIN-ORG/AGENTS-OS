@@ -28,7 +28,7 @@ def _agent_to_dict(a: Agent) -> Dict[str, Any]:
         "status": a.status.value,
         "decision_classes": a.decision_classes,
         "channels": a.channels,
-        "metadata": a.metadata,
+        "metadata": a.agent_metadata,
         "version": a.version,
         "created_at": a.created_at.isoformat(),
         "updated_at": a.updated_at.isoformat(),
@@ -130,7 +130,7 @@ def update_agent(
     agent.public_key_id = public_key_id
     agent.decision_classes = list(decision_classes)
     agent.channels = channels
-    agent.metadata = metadata or None
+    agent.agent_metadata = metadata or None
     agent.version = agent.version + 1
     agent.updated_at = datetime.utcnow()
 

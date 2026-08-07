@@ -23,8 +23,7 @@ class Logger:
             "msg": msg,
             **fields,
         }
-        sys.stdout.write(json.dumps(payload, ensure_ascii=False) + "
-")
+        sys.stdout.write(json.dumps(payload, ensure_ascii=False) + "\n")
         sys.stdout.flush()
 
     def info(self, msg: str, **fields: Any) -> None:

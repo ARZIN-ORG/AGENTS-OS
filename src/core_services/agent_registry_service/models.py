@@ -57,7 +57,7 @@ class Agent(Base):
     # Stored as JSON arrays for simplicity and portability.
     decision_classes = Column(JSON, nullable=False)  # list[str]
     channels = Column(JSON, nullable=False)          # list[dict]
-    metadata = Column(JSON, nullable=True)
+    agent_metadata = Column(JSON, nullable=True)
 
     version = Column(Integer, nullable=False, default=1)
     created_at = Column(DateTime(timezone=True), nullable=False, default=lambda: datetime.utcnow())

@@ -1,0 +1,9 @@
+/* Responsive Design Rules for AgentOS UI */
+@media (max-width: 768px) {
+  .sidebar { width: 100%; display: block; margin-bottom: 20px; }
+  .main { width: 100%; padding: 10px; }
+  .topbar .brand .title { display: none; }
+  .table { font-size: 12px; }
+  .card { margin: 10px 0; }
+  .top-actions { display: none; }
+}

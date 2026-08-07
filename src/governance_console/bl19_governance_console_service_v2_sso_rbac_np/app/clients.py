@@ -27,7 +27,7 @@ class AuditSinkClient:
     def fetch_events(self, window_hours: int, limit: int = 500, actor_id: Optional[str] = None,
                      action_type: Optional[str] = None, channel: Optional[str] = None,
                      trace_id: Optional[str] = None) -> List[Dict[str, Any]]:
-        # Works with both mock/simple sinks and richer sinks; best-effort.
+        # Supports compatible audit sink implementations through configured endpoint.
         params = {
             "window_hours": window_hours,
             "limit": limit,

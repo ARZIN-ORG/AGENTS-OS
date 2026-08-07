@@ -1,8 +1,0 @@
-aacp_bl13_recommendation_plane_bundle_v1.zip
-bl13_recommendation_plane_service_v2.zip
-bl17_intent_gateway_service_v1.zip
-bl17_intent_gateway_service_v2.zip
-aacp_bl17_wiring_bundle_v1.zip
-aacp_e2e_test_harness_SUGGESTION_FLOW_v1.py
-aacp_stage_next_stateful_audit_v1.zip
-aacp_stage_stateful_privatecloud_v1.zip

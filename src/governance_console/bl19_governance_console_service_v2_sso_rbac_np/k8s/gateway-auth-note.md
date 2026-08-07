@@ -1,6 +1,6 @@
 # Gateway/Auth integration (Phase-1)
 
-Phase-1 stance: **no fake crypto** inside the console.  
+Cryptographic operations are delegated to approved security components.  
 JWT verification must be performed by a trusted gateway (Envoy/Nginx/Traefik/APIM).
 
 Gateway forwards:

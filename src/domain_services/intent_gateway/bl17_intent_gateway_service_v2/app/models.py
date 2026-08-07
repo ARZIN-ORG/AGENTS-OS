@@ -28,3 +28,11 @@ class IntentRow(Base):
     finalized_at_utc: Mapped[str] = mapped_column(String(64), nullable=True)
     final_approval_id: Mapped[str] = mapped_column(String(128), nullable=True)
     trace_id: Mapped[str] = mapped_column(String(128), nullable=True)
+
+from pydantic import BaseModel
+from typing import Optional
+
+class PermitDecision(BaseModel):
+    permit_id: str
+    decision: str
+    reason: Optional[str] = None

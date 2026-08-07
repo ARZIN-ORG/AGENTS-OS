@@ -26,7 +26,7 @@ def _policy_to_dict(p: Policy) -> Dict[str, Any]:
         "status": p.status.value,
         "scope": p.scope,
         "constraints": p.constraints,
-        "metadata": p.metadata,
+        "metadata": p.policy_metadata,
         "created_at": p.created_at.isoformat(),
     }
 

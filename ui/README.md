@@ -1,24 +1,27 @@
-# AgentOS Governance Console UI (Dark (Arzin))
+# 🧠 AGENTS-OS UI
 
-This is a static, dependency-free UI bundle intended for Phase‑1 governance operations.
-It is safe for private-cloud deployment (no external CDN, no tracking, no remote calls).
+## معماری
+- **Core**: منطق اصلی (API, Auth, i18n, Router, Theme)
+- **Views**: صفحات مجزا با کنترلرهای مستقل
+- **Manifests**: پیکربندی ویوها (JSON)
+- **Assets**: فونت‌ها و تصاویر
+- **Themes**: تم‌های منطقه‌ای
 
-## What’s included
-- `index.html` + `css/` + `js/` + `assets/`
-- Built-in language toggle: **FA (rtl)** ⇄ **EN (ltr)**
-- Theme-specific visuals (dark/light) while keeping one unified interaction model
+## افزودن ویو جدید
+1. یک فایل `{category}__{view-name}.json` در `manifests/views/` بسازید.
+2. دو فایل `{view-name}.html` و `{view-name}.js` در `views/{category}/` ایجاد کنید.
+3. در `view-registry.json` ویو را ثبت کنید.
 
-## How to run locally
-Open `index.html` in a browser, or serve the folder with a static server.
+## تغییر تم
+1. فایل `core/theme-{name}.css` را ایجاد کنید.
+2. در `core-theme.js` به `themeMap` اضافه کنید.
+3. دکمه‌ی جدید در `index.html` اضافه کنید.
 
-## i18n / RTL-LTR
-Language selection is stored in `localStorage` key `agentos.lang`.
-- `fa` => `dir=rtl`
-- `en` => `dir=ltr`
+## اتصال به بک‌اند
+1. `core/app.config.json` را ویرایش کنید.
+2. `core-api.js` اصلاح شده است.
 
-## Notes for production
-- Put behind SSO / mTLS / reverse proxy (as per Control Plane hardening steps).
-- Keep the UI read-only by default; actions must flow through Intent→Confirm→Permit→AACP.
+## توسعه‌ی محلی
+```bash
+python3 -m http.server 8089
 
-## Version
-- UI Bundle: v1.1 (bilingual + rtl/ltr)

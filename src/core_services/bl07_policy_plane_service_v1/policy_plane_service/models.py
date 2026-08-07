@@ -27,7 +27,7 @@ class Policy(Base):
 
     scope = Column(JSON, nullable=False)
     constraints = Column(JSON, nullable=False)
-    metadata = Column(JSON, nullable=True)
+    policy_policy_metadata = Column(JSON, nullable=True)
 
     created_at = Column(DateTime(timezone=True), nullable=False, default=lambda: datetime.utcnow())
 
